@@ -11,11 +11,15 @@ const Gallery = () => {
         })
     }
 
-    const allPhotos = useLiveQuery( () => db.gallery.reverse().toArray(), [])
-
     const removePhoto = async (id) => {
         await db.gallery.delete(id)
     }
+
+    const clearGalleryDb = async () => {
+        await db.gallery.clear()
+    }
+
+    const allPhotos = useLiveQuery( () => db.gallery.reverse().toArray(), [])
 
     const galleryImages = (
         <section className="gallery">
@@ -33,10 +37,12 @@ const Gallery = () => {
     return (
         <>
             <input type="file" accept="image/*" name="photo" id="addPhotoInput" />
-            <label htmlFor="addPhotoInput" onClick={uploadImage}>
+            <label title="click to upload" htmlFor="addPhotoInput" onClick={uploadImage}>
                 <i className="add-photo-button bi bi-arrow-up-square-fill"></i>
             </label>
-
+            <button title="Delete all images" onClick={clearGalleryDb} className="clear-all-photo">
+                <i className="bi bi-x-square-fill"></i>
+            </button>
             {allPhotos ? allPhotos?.length > 0 ? galleryImages : noImage : <Animation/>}
         </>
     )

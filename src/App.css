@@ -165,6 +165,15 @@ body{
   #addPhotoInput {
     display: none;
   }
+
+  .clear-all-photo{
+    transform: scale(3);
+    position: fixed;
+    bottom: 5em;
+    left: 7em;
+    cursor: pointer;
+    color: red;
+  }
   
   .add-photo-button {
     transform: scale(3);

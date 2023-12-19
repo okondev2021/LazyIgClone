@@ -47,7 +47,7 @@ const Bio = () => {
     return (
         <section className="bio">
             <input type="file" accept='image/*' id="profilePhotoInput" />
-            <label htmlFor="profilePhotoInput" onClick={updateProfilePicture}>
+            <label title='click to edit' htmlFor="profilePhotoInput" onClick={updateProfilePicture}>
                 <div className="profile-photo" role="button" title="Click to edit photo">
                     <img src={userProfilePicture? userProfilePicture: defaultProfilePic} alt="profile" />
                 </div>
